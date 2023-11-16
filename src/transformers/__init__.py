@@ -273,6 +273,7 @@ _import_structure = {
     "models.convnextv2": ["CONVNEXTV2_PRETRAINED_CONFIG_ARCHIVE_MAP", "ConvNextV2Config"],
     "models.cpm": [],
     "models.cpmant": ["CPMANT_PRETRAINED_CONFIG_ARCHIVE_MAP", "CpmAntConfig", "CpmAntTokenizer"],
+    "models.cpt": ["CPT_PRETRAINED_CONFIG_ARCHIVE_MAP", "CPTConfig"],
     "models.ctrl": ["CTRL_PRETRAINED_CONFIG_ARCHIVE_MAP", "CTRLConfig", "CTRLTokenizer"],
     "models.cvt": ["CVT_PRETRAINED_CONFIG_ARCHIVE_MAP", "CvtConfig"],
     "models.data2vec": [
