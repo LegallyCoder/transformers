@@ -20,7 +20,7 @@ import math
 import os
 import warnings
 from typing import List, Optional, Tuple, Union
-
+from hflayers import HopfieldLayer
 import torch
 from torch import nn
 from torch.nn import BCEWithLogitsLoss, CrossEntropyLoss, MSELoss
@@ -1563,7 +1563,7 @@ class T5ForConditionalGeneration(T5PreTrainedModel):
         encoder_config.use_cache = False
         encoder_config.is_encoder_decoder = False
         self.encoder = T5Stack(encoder_config, self.shared)
-
+        self.hopfield = HopfieldLayer(input_size=encoder_config.d_model)
         decoder_config = copy.deepcopy(config)
         decoder_config.is_decoder = True
         decoder_config.is_encoder_decoder = False
@@ -1720,7 +1720,7 @@ class T5ForConditionalGeneration(T5PreTrainedModel):
             )
 
         hidden_states = encoder_outputs[0]
-
+        hidden_states = self.hopfield(hidden_states)
         if self.model_parallel:
             torch.cuda.set_device(self.decoder.first_device)
 
